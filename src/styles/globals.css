@@ -1,0 +1,210 @@
+@font-face {
+  font-family: "SPINC___";
+  src: url("../../public/fonts/SPINC___.TTF") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "URWGothic";
+  src: url("../../public/fonts/URWGothic-Demi.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "BlackFuture";
+  src: url("../../public/fonts/BlackFuture.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@keyframes neonGlow {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 2px #1f51ff) drop-shadow(0 0 4px #1f51ff)
+      drop-shadow(0 0 6px #1f51ff);
+  }
+  50% {
+    filter: drop-shadow(0 0 4px #1f51ff) drop-shadow(0 0 8px #1f51ff)
+      drop-shadow(0 0 12px #1f51ff);
+  }
+}
+
+.neon-glow {
+  transition: filter 0.5s ease-in-out;
+  filter: drop-shadow(0 0 0 transparent);
+}
+
+.neon-glow:hover {
+  animation: neonGlow 1.5s ease-in-out infinite;
+  transition-delay: 0.2s;
+}
+
+.neon-link {
+  position: relative;
+  display: inline-block;
+}
+
+.neon-link::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #1f51ff;
+  opacity: 0;
+  filter: drop-shadow(0 0 2px #1f51ff) drop-shadow(0 0 4px #1f51ff)
+    drop-shadow(0 0 6px #1f51ff);
+  transition: all 0.3s ease;
+  transform: scaleX(0);
+  transform-origin: left;
+  clip-path: path(
+    "
+    M0,1 
+    Q5,1 10,0 
+    T20,1 
+    T30,0 
+    T40,1 
+    T50,0 
+    T60,1 
+    T70,0 
+    T80,1 
+    T90,0 
+    T100,1"
+  );
+  animation: flicker 2s ease-in-out infinite;
+}
+
+@keyframes flicker {
+  0%,
+  100% {
+    clip-path: path(
+      "M0,1 Q5,1 10,0 T20,1 T30,0 T40,1 T50,0 T60,1 T70,0 T80,1 T90,0 T100,1"
+    );
+  }
+  50% {
+    clip-path: path(
+      "M0,0 Q5,1 15,0 T25,1 T35,0 T45,1 T55,0 T65,1 T75,0 T85,1 T95,0 T100,1"
+    );
+  }
+}
+
+.circular-text {
+  position: fixed;
+  pointer-events: none;
+  width: 150px;
+  height: 150px;
+  animation: rotate 8s linear infinite;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 50;
+}
+.clip-path-polygon {
+  clip-path: polygon(0 0, 100% 0, 85% 100%, 15% 100%);
+  transition: clip-path 0.3s ease;
+}
+
+.clip-path-polygon:hover {
+  clip-path: polygon(15% 0, 85% 0, 100% 100%, 0 100%);
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.hover-zone {
+  cursor: none;
+}
+
+.hover-zone:hover ~ .circular-text {
+  opacity: 1;
+}
+
+.neon-link:hover::after {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+.clip-path-normal {
+  clip-path: polygon(0 0, 100% 0, 85% 100%, 15% 100%);
+  transition: clip-path 0.3s ease;
+  border-radius: 10px;
+}
+
+.clip-path-inverse {
+  clip-path: polygon(15% 0, 85% 0, 100% 100%, 0 100%);
+  transition: clip-path 0.3s ease;
+  border-radius: 10px;
+}
+
+@keyframes glitch {
+  0% {
+    clip-path: polygon(0 0, 100% 0, 85% 100%, 15% 100%);
+    transform: translate(0);
+  }
+  20% {
+    clip-path: polygon(15% 0, 85% 0, 100% 100%, 0 100%);
+    transform: translate(-5px, 5px);
+  }
+  40% {
+    clip-path: polygon(0 0, 100% 0, 85% 100%, 15% 100%);
+    transform: translate(5px, -5px);
+  }
+  60% {
+    clip-path: polygon(15% 0, 85% 0, 100% 100%, 0 100%);
+    transform: translate(-5px);
+  }
+  80% {
+    clip-path: polygon(0 0, 100% 0, 85% 100%, 15% 100%);
+    transform: translate(5px);
+  }
+  100% {
+    clip-path: polygon(15% 0, 85% 0, 100% 100%, 0 100%);
+    transform: translate(0);
+  }
+}
+
+.concert-card:hover {
+  animation: glitch 0.5s ease-in-out;
+}
+
+.concert-card:hover img {
+  transform: scale(1.05);
+  transition: transform 0.5s ease;
+}
+
+.clip-path-diagonal {
+  clip-path: polygon(15% 0, 100% 0, 85% 100%, 0% 100%);
+}
+
+@keyframes scanline {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+.space-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    transparent 50%,
+    rgba(31, 81, 255, 0.1) 50%
+  );
+  background-size: 100% 4px;
+  animation: scanline 2s linear infinite;
+  pointer-events: none;
+}
