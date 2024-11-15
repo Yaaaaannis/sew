@@ -1,7 +1,8 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-gsap.registerPlugin(ScrollTrigger);
+import { TextPlugin } from 'gsap/dist/TextPlugin';
+gsap.registerPlugin(ScrollTrigger, TextPlugin);
 
 export default function Hero() {
   const textRefs = useRef([]);

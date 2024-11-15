@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @font-face {
   font-family: "SPINC___";
   src: url("../../public/fonts/SPINC___.TTF") format("truetype");
@@ -19,9 +23,7 @@
   font-style: normal;
 }
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+
 @keyframes neonGlow {
   0%,
   100% {
@@ -136,39 +138,45 @@
 }
 
 .clip-path-normal {
+  -webkit-clip-path: polygon(0 0, 100% 0, 85% 100%, 15% 100%);
   clip-path: polygon(0 0, 100% 0, 85% 100%, 15% 100%);
-  transition: clip-path 0.3s ease;
-  border-radius: 10px;
+  transition: all 0.3s ease;
 }
 
 .clip-path-inverse {
+  -webkit-clip-path: polygon(15% 0, 85% 0, 100% 100%, 0 100%);
   clip-path: polygon(15% 0, 85% 0, 100% 100%, 0 100%);
-  transition: clip-path 0.3s ease;
-  border-radius: 10px;
+  transition: all 0.3s ease;
 }
 
 @keyframes glitch {
   0% {
+    -webkit-clip-path: polygon(0 0, 100% 0, 85% 100%, 15% 100%);
     clip-path: polygon(0 0, 100% 0, 85% 100%, 15% 100%);
     transform: translate(0);
   }
   20% {
+    -webkit-clip-path: polygon(15% 0, 85% 0, 100% 100%, 0 100%);
     clip-path: polygon(15% 0, 85% 0, 100% 100%, 0 100%);
     transform: translate(-5px, 5px);
   }
   40% {
+    -webkit-clip-path: polygon(0 0, 100% 0, 85% 100%, 15% 100%);
     clip-path: polygon(0 0, 100% 0, 85% 100%, 15% 100%);
     transform: translate(5px, -5px);
   }
   60% {
+    -webkit-clip-path: polygon(15% 0, 85% 0, 100% 100%, 0 100%);
     clip-path: polygon(15% 0, 85% 0, 100% 100%, 0 100%);
     transform: translate(-5px);
   }
   80% {
+    -webkit-clip-path: polygon(0 0, 100% 0, 85% 100%, 15% 100%);
     clip-path: polygon(0 0, 100% 0, 85% 100%, 15% 100%);
     transform: translate(5px);
   }
   100% {
+    -webkit-clip-path: polygon(15% 0, 85% 0, 100% 100%, 0 100%);
     clip-path: polygon(15% 0, 85% 0, 100% 100%, 0 100%);
     transform: translate(0);
   }
