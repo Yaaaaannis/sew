@@ -132,9 +132,11 @@
   opacity: 1;
 }
 
-.neon-link:hover::after {
-  opacity: 1;
-  transform: scaleX(1);
+.neon-link::after {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  /* Garder le reste des propriétés identiques */
+  /* Référence aux lignes 54-113 */
 }
 
 .clip-path-normal {
@@ -151,38 +153,48 @@
 
 @keyframes glitch {
   0% {
+    -webkit-clip-path: polygon(0 0, 100% 0, 85% 100%, 15% 100%);
+    clip-path: polygon(0 0, 100% 0, 85% 100%, 15% 100%);
     transform: translate(0);
   }
   20% {
+    -webkit-clip-path: polygon(15% 0, 85% 0, 100% 100%, 0 100%);
+    clip-path: polygon(15% 0, 85% 0, 100% 100%, 0 100%);
     transform: translate(-5px, 5px);
   }
   40% {
+    -webkit-clip-path: polygon(0 0, 100% 0, 85% 100%, 15% 100%);
+    clip-path: polygon(0 0, 100% 0, 85% 100%, 15% 100%);
     transform: translate(5px, -5px);
   }
   60% {
+    -webkit-clip-path: polygon(15% 0, 85% 0, 100% 100%, 0 100%);
+    clip-path: polygon(15% 0, 85% 0, 100% 100%, 0 100%);
     transform: translate(-5px);
   }
   80% {
+    -webkit-clip-path: polygon(0 0, 100% 0, 85% 100%, 15% 100%);
+    clip-path: polygon(0 0, 100% 0, 85% 100%, 15% 100%);
     transform: translate(5px);
   }
   100% {
+    -webkit-clip-path: polygon(15% 0, 85% 0, 100% 100%, 0 100%);
+    clip-path: polygon(15% 0, 85% 0, 100% 100%, 0 100%);
     transform: translate(0);
   }
 }
-
 .concert-card {
-  will-change: transform;
-  transform-style: preserve-3d;
-  backface-visibility: hidden;
+  will-change: transform, clip-path;
+  transform: translateZ(0);
 }
 
 .concert-card:hover {
-  animation: glitch 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation: glitch 0.5s ease-in-out;
 }
 
 .concert-card:hover img {
   transform: scale(1.05);
-  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: transform 0.5s ease;
 }
 
 .clip-path-diagonal {

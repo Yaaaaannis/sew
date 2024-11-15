@@ -118,14 +118,14 @@ export default function Gallery() {
           {concerts.map((concert, index) => (
             <div 
               key={concert.id}
-              className={`concert-card group relative aspect-square overflow-hidden cursor-none transform-gpu ${
+              className={`concert-card group relative aspect-square overflow-hidden cursor-none rounded-xl ${
                 index % 2 === 0 ? 'clip-path-normal' : 'clip-path-inverse'
               }`}
             >
               <img
                 src={concert.image}
                 alt={concert.title}
-                className="w-full h-full object-cover transition-all duration-500 transform-gpu"
+                className="w-full h-full object-cover transition-transform duration-500"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end">
                 <div className="absolute bottom-0 w-full p-6 text-center">
